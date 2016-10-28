@@ -3,7 +3,6 @@
  */
 package it.sevenbits.formatter;
 
-
 class Formatter {
      static void checkSymbol(String s) {
 
@@ -45,7 +44,6 @@ class Formatter {
      }
     /**
      * method tab
-
      */
     static void tab(final int block) {
         for (int i = 0; i < block; i++) {
