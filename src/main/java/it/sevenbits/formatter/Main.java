@@ -1,4 +1,4 @@
-/**
+/*
  * Package containing Formatter method
  */
 package it.sevenbits.formatter;

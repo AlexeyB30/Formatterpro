@@ -1,4 +1,4 @@
-/**
+/*
  * Package containing Formatter method
  */
 package it.sevenbits.formatter;
@@ -45,7 +45,7 @@ class Formatter {
     /**
      * method tab
      */
-    static void tab(final int block) {
+    private void tab(final int block) {
         for (int i = 0; i < block; i++) {
             System.out.print("\t");
         }
