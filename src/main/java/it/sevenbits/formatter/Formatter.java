@@ -3,51 +3,60 @@
  */
 package it.sevenbits.formatter;
 
-class Formatter {
-     static void checkSymbol(String s) {
+public class Formatter implements IFormatter {
 
-        int block = 0;
-        boolean tag = false;
-        for (int i = 0; i < s.length(); i++) {
 
-            char symbol = s.charAt(i);
+    public void format(IReader input, IWriter output){
+        while (input.hasChar()) {
+            checkSymbol(output, input.readChar());
+        }
 
-                 switch (symbol) {
+    }
+    private int block = 0;
+    private boolean tag = false;
+
+     private void checkSymbol(final IWriter output,final char symbol) {
+
+
+         switch (symbol) {
                     case '{':
                         block++;
-                        System.out.println(symbol);
-                        tab(block);
+                        output.writeChar(symbol);
+                        output.writeChar('\n');
+                        tab(output);
                         break;
 
                     case ';':
                         tag = true;
-                        System.out.println(symbol);
+                        output.writeChar(symbol);
+                        output.writeChar('\n');
                         break;
 
                     case '}':
                         block--;
-                        tab(block);
-                        System.out.println(symbol);
+                        tab(output);
+                        output.writeChar(symbol);
+                        output.writeChar('\n');
                         break;
 
                     default:
                         if (tag) {
-                            tab(block);
-                            System.out.print(symbol);
+                            tab(output);
+                            output.writeChar(symbol);
                             tag = false;
                         } else {
-                            System.out.print(symbol);
+                            output.writeChar(symbol);
                         }
                         break;
                 }
-        }
+
      }
     /**
      * method tab
      */
-    private void tab(final int block) {
+    private void tab(final IWriter output) {
         for (int i = 0; i < block; i++) {
-            System.out.print("\t");
+            output.writeChar('\t');
         }
     }
 }
